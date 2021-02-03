@@ -6,6 +6,7 @@ const titanic = document.querySelector('#titanic')
 // Set some styles on the titanic
 // display flex, justifyContent center, alignItems flex-end
 titanic.style.display = 'grid'
+// Change the number of columns on the titanic to 34
 titanic.style.gridTemplateColumns = 'repeat(34, 15px)'
 titanic.style.gridGap = '1px'
 
@@ -21,8 +22,14 @@ passengers.forEach(p => {
 
 // Let's loop over each passenger and set some styles 
 passengers.forEach((p, i) => {
+  // Make the squares a little bigger 15px by 15px. 
+  // You'll need to change both the gridTemplateColumn on the
+  // titanic and the width and height of each passenger. 
   p.style.width = '15px'
   p.style.height = '15px'
+  // Set the backgroundColor of each passenger by their 
+  // embarked value. There are three possible values: 
+  // 'S', 'C', and 'Q'
   if (data[i].fields.embarked === "S") {
 	  p.style.backgroundColor  = 'red'
   } else if (data[i].fields.embarked === "C") {
@@ -30,33 +37,13 @@ passengers.forEach((p, i) => {
   }if (data[i].fields.embarked === "Q") {
 	  p.style.backgroundColor  = 'blue'
   }
-  
-  p.style.borderRadius = data[i].fields.sex === 'female' ? "50%" : "0"
+  // Display each passenger as a circle if they are female. 
+  // Do this by setting the borderRadius of each passenger. 
+  // Match the passenger in passengers to the object data 
+  // in the data array by the index. 
+  p.style.borderRadius = data[i].fields.sex === 'female' ? "50%" : "0";
+
+  // Display each passengers who did not survive as 
+  // opacity 0.5. 
+  p.style.opacity = data[i].fields.survived === "No" ? "0.5" : "1";
 })
-
-// Challenges - 
-
-// Make the squares a little bigger 15px by 15px. 
-// You'll need to change both the gridTemplateColumn on the
-// titanic and the width and height of each passenger. 
-
-
-
-// Change the number of columns on the titanic to 34
-
-
-// Display each passenger as a circle if they are female. 
-// Do this by setting the borderRadius of each passenger. 
-// Match the passenger in passengers to the object data 
-// in the data array by the index. 
-
-
-
-// Display each passengers who did not survive as 
-// opacity 0.5. 
-
-
-
-// Set the backgroundColor of each passenger by their 
-// embarked value. There are three possible values: 
-// 'S', 'C', and 'Q'
